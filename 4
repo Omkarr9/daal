@@ -1,136 +1,133 @@
 import java.util.*;
 import java.io.*;
 class QuickSort1
-{
-    int array[];
-    int length;
-    static int cnt;
-    static int size;
-    static boolean flag;
-public
-    static void main(String a[]) throws
-        IOException
-    {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the number of elements to sorted: ( >5000):");
-        size = scanner.nextInt();
-        flag = true;
-        cnt = 0;
-        System.out.println("Enter the elements:");
-        int[] inputArr = new int[size];
-        getRandomNumbers(inputArr);
-        QuickSort1 qsort = new QuickSort1();
-        qsort.sort(inputArr);
-        System.out.println();
-        System.out.println("The time complexity for average case is " +
-                           cnt);
-        PrintWriter outA = new PrintWriter(new File("q_asort.txt"));
-        for (int i : inputArr)
-        {
-            outA.close();
-            cnt = 0;
-            QuickSort1 qAsort = new QuickSort1();
-            qAsort.sort(inputArr);
-            System.out.println();
-            System.out.println("The time complexity for worst case is " + cnt);
-            cnt = 0;
-            flag = false;
-            QuickSort1 qDsort = new QuickSort1();
-            qDsort.sort(inputArr);
-            System.out.println();
-            System.out.println("The time complexity for best case is " + cnt);
-            PrintWriter outD = new PrintWriter(new File("q_dsort.txt"));
-            for (int i : inputArr)
-            {
-                outD.print(i);
-                outD.print(" ");
-            }
-            outD.close();
-        }
-        static void getRandomNumbers(int[] inputArr) throws IOException
-        {
-            Random rand = new Random();
-            int number, count = 0;
-            PrintWriter out = new PrintWriter(new File("Qrandom.txt"));
-            while (count < size)
-            {
-                number = rand.nextInt(size) + 1;
-                out.print(number);
-                out.print(" ");
-                inputArr[count] = number;
-                count++;
-            }
-            out.close();
-            System.out.println("The total numbers generated: " + count);
-        }
-        void sort(int[] inputArr)
-        {
-            if (inputArr == null || inputArr.length == 0)
-            {
-                return;
-            }
-            this.array = inputArr;
-            length = inputArr.length;
-            quickSort(0, length - 1);
-        }
-        void quickSort(int lowerIndex, int higherIndex)
-        {
-            int left = lowerIndex;
-            int right = higherIndex;
-            int pivot = array[lowerIndex];
-            if (flag)
-                while (left <= right)
-                {
-                    while (array[left] < pivot)
-                    {
-                        left++;
-                        cnt++;
-                    }
-                    while (array[right] > pivot)
-                    {
-                        right--;
-                        cnt++;
-                    }
-                    if (left <= right)
-                    {
-                        exchangeNumbers(left, right);
-                        left++;
-                        right--;
-                    }
-                }
-            else
-                while (left <= right)
-                {
-                    while (array[left] > pivot)
-                    {
-                        left++;
-                        cnt++;
-                    }
-                    while (array[right] < pivot)
-                    {
-                        right--;
-                        cnt++;
-                    }
-                    if (left <= right)
-                    {
-                        exchangeNumbers(left, right);
-                        left++;
-                        right--;
-                    }
-                }
-            if (lowerIndex < right)
-            {
-                quickSort(lowerIndex, right);
-            }
-            if (left < higherIndex)
-            {
-                quickSort(left, higherIndex);
-            }
-        }
-        void exchangeNumbers(int l, int r)
-        {
-            int temp = array[l];
-            array[l] = array[r];
-            array[r] = temp;
-        }
-    }
+	{
+	int array[];
+	int length;
+	static int cnt;
+	static int size;
+	static boolean flag;
+	public static void main(String a[]) throws
+	IOException {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter the number of elements to sorted: ( >5000):");
+		size = scanner.nextInt();
+		flag = true;
+		cnt = 0;
+		System.out.println("Enter the elements:");
+		int [] inputArr = new int [size];
+		getRandomNumbers(inputArr);
+		QuickSort1 qsort = new QuickSort1();
+		qsort.sort(inputArr);
+		System.out.println();
+		System.out.println("The time complexity for average case is " +cnt); PrintWriter outA = new PrintWriter(new File("q_asort.txt"));
+		for(int i:inputArr)
+		{
+			outA.close();
+			cnt = 0;
+			QuickSort1 qAsort = new QuickSort1();
+			qAsort.sort(inputArr);
+			System.out.println();
+			System.out.println("The time complexity for worst case is " + cnt);
+			cnt = 0;
+			flag = false;
+			QuickSort1 qDsort = new QuickSort1();
+			qDsort.sort(inputArr);
+			System.out.println();
+			System.out.println("The time complexity for best case is " + cnt);
+			PrintWriter outD = new PrintWriter(new File("q_dsort.txt"));
+			for(int l:inputArr)
+			{
+				outD.print(i);
+				outD.print(" ");
+			}
+			outD.close();
+		}
+	}
+	static void getRandomNumbers(int[] inputArr)throws IOException
+	{
+		Random rand = new Random();
+		int number, count=0;
+		PrintWriter out = new PrintWriter(new File("Qrandom.txt"));
+		while(count<size)
+			{
+			number=rand.nextInt(size)+1;
+			out.print(number);
+			out.print(" ");
+			inputArr[count]=number;
+			count++;
+		}
+		out.close();
+		System.out.println("The total numbers generated: " + count );
+	}
+	void sort(int[] inputArr)
+	{
+		if (inputArr == null || inputArr.length == 0)
+		{
+			return;
+		}
+		this.array = inputArr;
+		length = inputArr.length;
+		quickSort(0, length - 1);
+		}
+	void quickSort(int lowerIndex, int higherIndex)
+	{
+		int left = lowerIndex;
+		int right = higherIndex;
+		int pivot = array[lowerIndex];
+		if(flag)
+			while (left <= right)
+				{
+				while (array[left] < pivot)
+				{
+					left++;
+					cnt++;
+				}
+				while (array[right] > pivot)
+				{
+					right--;
+					cnt++;
+				}
+				if (left <= right)
+				{
+						exchangeNumbers(left, right);
+					left++;
+					right--;
+				}
+			}
+		else
+		while (left <= right)
+			{
+			while (array[left] > pivot)
+			{
+				left++;
+				cnt++;
+			}
+			while (array[right] < pivot)
+			{
+				right--;
+				cnt++;
+			}
+				if (left <= right)
+			{
+				exchangeNumbers(left, right);
+				left++;
+				right--;
+			}
+		}
+	if (lowerIndex < right)
+	{
+	quickSort(lowerIndex, right);
+	}
+if (left < higherIndex)
+	{
+		quickSort(left, higherIndex);
+	}
+}
+void exchangeNumbers(int l, int r)
+	{
+		int temp = array[l];
+		array[l] = array[r];
+		array[r] = temp;
+	}
+}
